@@ -14,8 +14,8 @@
   "license": "MIT",
   "scripts": {
     "test": "",
-    "start": "node server",
-    "deploy": "rimraf dist && set NODE_ENV=production && webpack --config ./webpack.production.config.js --progress --profile --colors",
+    "build": "rimraf dist && set NODE_ENV=development && webpack --config ./webpack.config.js --progress --profile --colors && nodemon server.js",
+    "production": "rimraf dist && set NODE_ENV=production && webpack --config ./webpack.production.config.js --progress --profile --colors && node server.js",
     "eslint": "eslint .",
     "jscs": "jscs ."
   },

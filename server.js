@@ -11,7 +11,7 @@ const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 3000 : process.env.PORT;
 const app = express();
 
-if (isDeveloping) {
+if (isDeveloping == 'development') {
   const compiler = webpack(config);
   const middleware = webpackMiddleware(compiler, {
     publicPath: config.output.publicPath,
@@ -33,10 +33,12 @@ if (isDeveloping) {
     res.end();
   });
 } else {
+
   app.use(express.static(__dirname + '/public'));
   app.get('*', function response(req, res) {
     res.sendFile(path.join(__dirname, 'public/index.html'));
   });
+
 }
 
 app.listen(port, '0.0.0.0', function onStart(err) {
